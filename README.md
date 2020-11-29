@@ -4,3 +4,7 @@ Movie Suggestions is the first step for a bigger project that gives you 6 movie 
 
 Here's an example from the input "Batman Begins":     
 ![alt text](https://raw.githubusercontent.com/dsalzedon/Movies_Suggestions/main/img/movie_recomendations.jpg)   
+
+Here's an example from the input "Inside man":     
+![alt text](https://raw.githubusercontent.com/dsalzedon/Movies_Suggestions/main/img/movie_recomendations1.jpg)   
+
