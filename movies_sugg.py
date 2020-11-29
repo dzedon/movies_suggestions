@@ -1,5 +1,7 @@
-import requests, json
+import requests
+import json
 from PIL import Image
+import io
 
 
 def get_movies_from_tastedive(movie_name):
@@ -54,6 +56,7 @@ def get_movie_poster(movie):
     movie_poster = get_movie_data(movie)
     response = requests.get(movie_poster['Poster'])
     title = fix_title(movie_poster['Title'])
+
     img_path = f"img/{title}"
     with open(img_path, "wb") as file:
         file.write(response.content)
@@ -62,6 +65,7 @@ def get_movie_poster(movie):
 
 
 def make_poster(posters):
+
 
     all_pictures = [Image.open(f"{poster}").convert('RGB') for poster in posters]
 
@@ -92,7 +96,7 @@ def get_sorted_recommendations(movie_lst):
 
     movies_posters = [get_movie_poster(movie) for movie in movie_recomendations]
 
-    # uncomment to get the list of movies order by rating
+    # uncommet to get the list of movies order by rating
     # movie_and_ratings= {movie: get_movie_rating(get_movie_data(movie)) for movie in movie_recomendations}
     # sorted_movies = [x for x in sorted(movie_and_ratings.keys(), key=lambda k: (movie_and_ratings[k], k), reverse=True)]
 
@@ -100,10 +104,12 @@ def get_sorted_recommendations(movie_lst):
 
     return suggestions_poster
 
+# separate movies bye ","
+# if you're searching just one picture use "," at the end
+user_input = "Inside Man,"
 
+user_input = user_input.split(",")
 
-user_input = "Batman Begins"
-
-movies = get_sorted_recommendations([user_input])
+movies = get_sorted_recommendations(user_input)
 
 movies.show()
